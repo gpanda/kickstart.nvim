@@ -93,8 +93,20 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- ============================== MY PATCH ==============================
 -- python provider
 vim.g.python3_host_prog = '$RHUB_LOCAL/var/py.venv/bin/python'
+
+-- By default, `vim` is equivalent to `vim --cmd "let g:vimrclevel=5"`
+if not vim.g.vimrclevel then
+  vim.g.vimrclevel = 5
+end
+
+-- Exit when self defined flag `vimrclevel` = 0
+if vim.g.vimrclevel == 0 then
+  vim.cmd 'quit'
+end
+-- ============================== MY PATCH ==============================
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
